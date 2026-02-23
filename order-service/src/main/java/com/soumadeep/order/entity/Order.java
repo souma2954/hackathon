@@ -1,17 +1,28 @@
 package com.soumadeep.order.entity;
 
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
 
+@Entity
 public class Order {
 	
-	private Long orderId;
+	@Id
+	@Column(name = "ORDER_ID")
+	private Integer orderId;
+	@Column(name = "PRODUCT_NAME")
 	private String productName;
 	private int quantity;
+	@Column(name = "ORDER_PRICE")
 	private double price;
+	@Column(name = "CUSTOMER_ID")
 	private Long customerId;
-	public Long getOrderId() {
+	
+	
+	public Integer getOrderId() {
 		return orderId;
 	}
-	public void setOrderId(Long orderId) {
+	public void setOrderId(Integer orderId) {
 		this.orderId = orderId;
 	}
 	public String getProductName() {

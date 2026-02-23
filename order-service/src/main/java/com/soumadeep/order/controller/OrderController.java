@@ -1,6 +1,7 @@
 package com.soumadeep.order.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -26,9 +27,9 @@ public class OrderController {
 	}
 	
 	@GetMapping("{orderId}")
-	public Order getOrderById(Long orderId) {
-		Order order = orderService.getOrderById(orderId);
-		return order;
+	public Order getOrderById(Integer orderId) {
+		 return orderService.getOrderById(orderId)
+		            .orElseThrow(() -> new RuntimeException("Order not found"));
 	}
 	
 	@GetMapping("/customer/{customerId}")
